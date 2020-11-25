@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Forestreet Front-end Coding Challenge #
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+When completing this coding challenge, please organise your code as if it were going into production, then send us a link to the hosted repository (e.g. Github, Bitbucket...).
 
-## Available Scripts
+### Functional Spec ###
 
-In the project directory, you can run:
+Create a simple, single page app (SPA) that allows a user to view [U.K Carbon Intensity data](https://carbon-intensity.github.io/api-definitions/?shell#get-intensity-date-date-period) in a graph. The data will be requested from the National Grid Carbon
+Intensity public API.
 
-### `yarn start`
+The user should be able to:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Open the SPA in their browser.
+- See a loading spinner when they land on the page. In the background you'll make a request to get data from the carbon intensity REST API.
+- After the data has been loaded from the API, a graph with appear showing a range of carbon intensity data between two dates.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### UI/UX Design ###
 
-### `yarn test`
+The UI/UX is completely up to you. Be as creative as you want while considering the user's experience, but be prepared to explain your design decisions.
+You may add additional features if you think the users will find it useful!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Technical Spec ###
 
-### `yarn build`
+The architecture for this app will feature only the web front-end. Instructions on how to access the U.K Carbon Intensity REST API for obtaining data can be found below under the Back-end heading.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Front-end ###
+The front-end should be a single page app built using React. Take this opportunity to demonstrate your HTML and CSS knowledge.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+There are a number of React charting libraries. Here are a few to get you started:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Nivo
+- Victory
+- ESNet React Timeseries Charts
+- Carbon Design System Data Visualization
 
-### `yarn eject`
+### Back-end ###
+The Carbon Intensity REST API is open to developers and accessible without registering for an account. You can read the API documentation here: [U.K Carbon Intensity data](https://carbon-intensity.github.io/api-definitions/?shell#get-intensity-date-date-period).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Retrieving a range of data can be done through the /intensity endpoint, by specifying two dates as URL path parameters. The documentation covers this in further detail: https://carbon-intensity.github.io/api-definitions/?shell#get-intensity-from-to
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This will output a JSON response that looks like (below is a subset of the output):
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+{
+    "data": [
+        {
+            "from": "2018-08-25T12:30Z",
+            "to": "2018-08-25T13:00Z",
+            "intensity": {
+                "forecast": 142,
+                "actual": 184,
+                "index": "moderate"
+            }
+        },
+        {
+            "from": "2018-08-25T13:00Z",
+            "to": "2018-08-25T13:30Z",
+            "intensity": {
+                "forecast": 141,
+                "actual": 185,
+                "index": "moderate"
+            }
+        }
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
 
-## Learn More
+### Hosting ###
+When you're done, host it somewhere (e.g. on Amazon EC2, Heroku, Google AppEngine, etc.) and provide us with the link to your hosted application when you submit.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### How We Review ###
+We value quality over feature-completeness. It is fine to leave things aside provided you explain your reasoning. You should consider this code ready for final review with your colleague, i.e. this would be the last step before deploying to production.
